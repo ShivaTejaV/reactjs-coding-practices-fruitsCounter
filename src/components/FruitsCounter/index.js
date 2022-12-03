@@ -5,11 +5,24 @@ import {Component} from 'react'
 class FruitsCounter extends Component {
   state = {Mangos: 0, Bananas: 0}
 
+  eatMango = () => {
+    this.setState(prevState => ({Mangos: prevState.Mangos + 1}))
+  }
+
+  eatBanana = () => {
+    this.setState(prevState => ({Bananas: prevState.Bananas + 1}))
+  }
+
   render() {
+    const {Mangos, Bananas} = this.state
+
     return (
       <div className="bg">
         <div className="container">
-          <h1>Bob ate Mangos Bananas</h1>
+          <h1>
+            Bob ate <span className="number">{Mangos}</span> mangoes{' '}
+            <span className="number">{Bananas}</span> bananas
+          </h1>
           <div className="fruit-container">
             <div className="fruit">
               <img
@@ -17,7 +30,9 @@ class FruitsCounter extends Component {
                 src="https://assets.ccbp.in/frontend/react-js/mango-img.png"
                 alt="mango"
               />
-              <button>Eat Mango</button>
+              <button className="button" type="button" onClick={this.eatMango}>
+                Eat Mango
+              </button>
             </div>
 
             <div className="fruit">
@@ -26,7 +41,9 @@ class FruitsCounter extends Component {
                 src="https://assets.ccbp.in/frontend/react-js/banana-img.png"
                 alt="banana"
               />
-              <button>Eat Banana</button>
+              <button className="button" type="button" onClick={this.eatBanana}>
+                Eat Banana
+              </button>
             </div>
           </div>
         </div>
